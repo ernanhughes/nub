@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nub"
+version = "0000.0.1"
+dependencies = [
+  "ollama",
+  "gidgethub[httpx]>4.0.0",
+  "django>2.1; os_name != 'nt'",
+  "django>2.0; os_name == 'nt'",
+]
+requires-python = ">=3.11"
+authors = [
+  {name = "Ernan Hughes", email = "ernanhughes@gmail.com"},
+]
+maintainers = [
+  {name = "Ernan Hughes", email = "ernanhughes@gmail.com"}
+]
+description = "Nub the summary application."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = ["ollama", "summary", "llm", "text"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.optional-dependencies]
+gui = ["PyQt5"]
+cli = [
+  "rich",
+  "click",
+]
+
+[project.urls]
+Homepage = "https://github.com/ernanhughes/nub"
+Documentation = "https://readthedocs.org"
+Repository = "https://github.com/ernanhughes/nub.git"
+"Bug Tracker" = "https://github.com/ernanhughes/nub/issues"
+Changelog = "https://github.com/ernanhughes/nub/blob/master/CHANGELOG.md"
+
+[project.scripts]
+spam-cli = "nub:main_cli"
+
+[project.gui-scripts]
+spam-gui = "nub:main_gui"
+
