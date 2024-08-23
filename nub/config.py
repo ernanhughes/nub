@@ -34,7 +34,7 @@ DEFAULT_CONFIG = {
 class Config(dict):
     def __init__(self, config_path: Path, **defaults: Any):
         self.config_path = config_path
-        print(f'Config path: {config_path}')
+        print(f"Config path: {config_path}")
         if self._exists():
             self._read()
             has_new_config = False
@@ -42,7 +42,7 @@ class Config(dict):
                 if key not in self:
                     has_new_config = True
                     self[key] = value
-                    print('Key: {key} Value:{value}')
+                    print("Key: {key} Value:{value}")
             if has_new_config:
                 self._write()
         else:

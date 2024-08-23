@@ -11,26 +11,25 @@ from youtube_transcript_api.formatters import TextFormatter
 @dataclass
 class VideoInfoData:
     id: str
-    title: str = ''
-    url: str = ''
-    upload_date: str = ''
-    duration: str = ''
-    description: str = ''
-    genre: str = ''
+    title: str = ""
+    url: str = ""
+    upload_date: str = ""
+    duration: str = ""
+    description: str = ""
+    genre: str = ""
     is_paid: bool = False
     is_unlisted: bool = False
     is_family_friendly: bool = False
-    channel_id: str = ''
+    channel_id: str = ""
     views: int = 0
     likes: int = 0
     dislikes: int = 0
-    thumbnail_url: str = ''
-    player_type: str = ''
-    regions_allowed: str = ''
+    thumbnail_url: str = ""
+    player_type: str = ""
+    regions_allowed: str = ""
 
 
 class VideoInfo:
-
     def __init__(self, video_id: str):
         self.video_id = video_id
         self.video_data = self._scrape_video_data()
@@ -116,7 +115,10 @@ class VideoInfo:
     def _extract_stat(self, label: str, script_content: str) -> int:
         """Extract specific statistic (likes/dislikes) from the script content."""
         try:
-            match = re.findall(f'label(.*)', re.findall(f'{label}(.*?){label.lower()}', script_content)[0])[0]
+            match = re.findall(
+                f"label(.*)",
+                re.findall(f"{label}(.*?){label.lower()}", script_content)[0],
+            )[0]
             result = ("".join(match.split(",")).split('"')[-1]).strip()
             return int(result)
         except (IndexError, ValueError) as e:

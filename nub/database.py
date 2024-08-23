@@ -11,6 +11,7 @@ import nub.logging_config
 
 logger = logging.getLogger(__name__)
 
+
 class SummarizeDb:
     def __init__(self, db_file: str = appConfig.get("DATABASE_PATH")):
         super().__init__()
@@ -52,8 +53,8 @@ class SummarizeDb:
         # Prepare the SQL statement
         sql = """
         INSERT INTO VIDEO_DATA (
-            video_id, title, upload_date, duration, description, genre, 
-            is_paid, is_unlisted, is_family_friendly, channel_id, 
+            video_id, title, upload_date, duration, description, genre,
+            is_paid, is_unlisted, is_family_friendly, channel_id,
             views, likes, dislikes, regionsAllowed, thumbnail_url
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
@@ -112,7 +113,7 @@ class SummarizeDb:
             response["prompt_eval_count"],
             response["prompt_eval_duration"],
             response["eval_count"],
-            response["eval_duration"]
+            response["eval_duration"],
         )
         try:
             self.cur.execute(sql, data)
@@ -124,8 +125,8 @@ class SummarizeDb:
 
     @staticmethod
     def init_db(
-            db: str = appConfig.get("DATABASE_PATH"),
-            schema: str = appConfig.get("SCHEMA_FILE"),
+        db: str = appConfig.get("DATABASE_PATH"),
+        schema: str = appConfig.get("SCHEMA_FILE"),
     ):
         logger.debug("Initializing the database.....")
         base_dir = os.path.abspath(os.path.dirname(__file__))

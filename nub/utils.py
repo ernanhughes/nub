@@ -18,9 +18,9 @@ def get_default_data_dir(app_name: str) -> Path:
     home = Path.home()
 
     system_paths = {
-        "win32": home / f'AppData/Roaming/{app_name}',
-        "linux": home / f'.local/share/{app_name}',
-        "darwin": home / f'Library/Application Support/{app_name}',
+        "win32": home / f"AppData/Roaming/{app_name}",
+        "linux": home / f".local/share/{app_name}",
+        "darwin": home / f"Library/Application Support/{app_name}",
     }
 
     data_path = system_paths[sys.platform]

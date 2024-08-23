@@ -30,9 +30,9 @@ The format of your response needs to be in markdown formatting. Use "- " for bul
 
 
 class OllamaService:
-
-    def __init__(self, model: str = "llama3.1",
-                 window_size: int = 128000, overlap: int = 1000):
+    def __init__(
+        self, model: str = "llama3.1", window_size: int = 128000, overlap: int = 1000
+    ):
         self.model = model
         self.window_size = window_size
         self.overlap = overlap
@@ -80,7 +80,7 @@ class OllamaService:
         step = self.window_size - self.overlap
         # Ensure the range covers the entire length of the tokens
         chunks = [
-            " ".join(tokens[i: i + self.window_size])
+            " ".join(tokens[i : i + self.window_size])
             for i in range(0, len(tokens) - self.window_size + step, step)
         ]
         return chunks
@@ -88,7 +88,6 @@ class OllamaService:
     @staticmethod
     def pull_model(name: str = "llama3.1"):
         ollama.pull(name)
-
 
     @staticmethod
     def create_embedding(model: str, text: str):

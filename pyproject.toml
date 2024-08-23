@@ -46,4 +46,3 @@ spam-cli = "nub:main_cli"
 
 [project.gui-scripts]
 spam-gui = "nub:main_gui"
-

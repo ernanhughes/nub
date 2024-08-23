@@ -63,7 +63,10 @@ def split_text(text_path=None, title=None):
         sent_text = sent.text.strip()  # This is one sentence
         sent_tokens = count_tokens(sent_text)
 
-        if sum([count_tokens(chunk) for chunk in current_chunk]) + sent_tokens > max_tokens:
+        if (
+            sum([count_tokens(chunk) for chunk in current_chunk]) + sent_tokens
+            > max_tokens
+        ):
             # If adding sentence to the current chunk will exceed the token
             # limit, add the current chunk to the list of chunks and start a new
             # chunk with the current sentence
@@ -133,4 +136,6 @@ if __name__ == "__main__":
         summarise_transcript(text_path, title)
 
     else:
-        print("Usage: python3 -m gpt_summariser.summarise_transcript <transcript_path> <title>")
+        print(
+            "Usage: python3 -m gpt_summariser.summarise_transcript <transcript_path> <title>"
+        )

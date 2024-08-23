@@ -26,15 +26,16 @@ class DatabaseHandler(Handler):
         emission.
         """
         self.db_file.execute(
-            'INSERT INTO logs VALUES (:1,:2,:3,:4, :5, :6, :7)', (
-                date_time.now().strftime('%A, the %d of %B, %Y'),
-                date_time.now().strftime('%I:%M %p'),
+            "INSERT INTO logs VALUES (:1,:2,:3,:4, :5, :6, :7)",
+            (
+                date_time.now().strftime("%A, the %d of %B, %Y"),
+                date_time.now().strftime("%I:%M %p"),
                 record.levelno,
                 record.levelname,
                 record.msg,
                 record.name,
-                record.lineno
-            )
+                record.lineno,
+            ),
         )
         self.db_file.commit()
         self.db_file.close()
@@ -42,34 +43,33 @@ class DatabaseHandler(Handler):
 
 def setup_logging(default_level=logging.INFO):
     log_config = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'standard': {
-                'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "standard": {
+                "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             },
         },
-        'handlers': {
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'standard',
+        "handlers": {
+            "console": {
+                "level": "DEBUG",
+                "class": "logging.StreamHandler",
+                "formatter": "standard",
             },
-            'file': {
-                'level': 'DEBUG',
-                'class': 'logging.FileHandler',
-                'filename': 'app.log',
-                'formatter': 'standard',
+            "file": {
+                "level": "DEBUG",
+                "class": "logging.FileHandler",
+                "filename": "app.log",
+                "formatter": "standard",
             },
         },
-        'root': {
-            'handlers': ['console', 'file'],
-            'level': default_level,
+        "root": {
+            "handlers": ["console", "file"],
+            "level": default_level,
         },
     }
 
     logging.config.dictConfig(log_config)
-
 
 
 setup_logging()

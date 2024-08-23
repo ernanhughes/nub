@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS TRANSCRIPT_TEXT;
 CREATE TABLE TRANSCRIPT_TEXT(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
 	video_id TEXT NOT NULL,
-	text_data TEXT, 
+	text_data TEXT,
 	start_time REAL,
 	duration REAL
 );
@@ -51,15 +51,15 @@ DROP TABLE IF EXISTS CHAT_RESPONSE;
 CREATE TABLE CHAT_RESPONSE(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
 	model TEXT NOT NULL,
-	message_role TEXT, 
-	message_content TEXT, 
-	done_reason TEXT, 
-	done INTEGER, 
-	total_duration INTEGER, 
-	load_duration INTEGER, 
-	prompt_eval_count INTEGER, 
-	prompt_eval_duration INTEGER, 
-	eval_count INTEGER, 
-	eval_duration INTEGER, 
+	message_role TEXT,
+	message_content TEXT,
+	done_reason TEXT,
+	done INTEGER,
+	total_duration INTEGER,
+	load_duration INTEGER,
+	prompt_eval_count INTEGER,
+	prompt_eval_duration INTEGER,
+	eval_count INTEGER,
+	eval_duration INTEGER,
 	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
